@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href=" {% static 'accountscss/login.css' %} ">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+              <h3>  <a href="{% static '/' %}"> Afro<span>Tech</span></a> </h3> 
+            </div>
+    
+        </div>
+
+    </header>
+    <div class="login">
+        <form action="." method="POST">
+            {% csrf_token %}
+            
+            <label for="username">UserName</label>
+            <input type="text"name="username" placeholder="username"><br>
+            <label for="password">Password</label>
+            <input type="password"name="password" placeholder="password"><br>
+            <input type="submit"value="submit" ><br>
+            
+        </form>
+    </div>
+    <div class="error" > 
+        {% for message in messages%}
+        <h4>{{message}}</h4>
+        {% endfor %}
+    </div>
+    
+</body>
+</html>
